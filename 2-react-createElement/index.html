@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Create Element</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script>
+        const Title = React.createElement('h2', {
+            id : 'title'
+
+        }, 'React Tutorials');
+        const Image = React.createElement('img', {
+            id : 'banner',
+            src : 'https://tdpsoft.com/wp-content/uploads/2019/12/tdp-reactjs-min-1200x675.png'
+        });
+        const App = React.createElement('div', {className : 'wrap'}, Title, Image);
+        const root = document.getElementById('root');
+        ReactDOM.render(App,root);
+    </script>
+</body>
+</html>
