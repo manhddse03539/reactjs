@@ -1,0 +1,23 @@
+.TrafficLight {
+    display : flex;
+    flex-direction: column;
+}
+.bulb{
+    width: 70px;
+    height: 70px;
+    opacity: 0.2;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+.active {
+    opacity: 1;
+}
