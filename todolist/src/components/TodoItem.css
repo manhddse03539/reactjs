@@ -1,0 +1,25 @@
+.TodoItem {
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #202020;
+    font-family: initial;
+    display: flex;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 10px 5px;
+}
+.TodoItem > p {
+    padding-left: 10px;
+    margin: 0;
+}
+.TodoItem:last-child {
+    border : none;
+} 
+.TodoItem > img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+.TodoItemComplete > p {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
