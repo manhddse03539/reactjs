@@ -1,0 +1,64 @@
+.EditPopup {
+    border: 1px solid #cccccc;
+    width: 30%;
+    padding: 5px 10px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.EditPopup > img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    float: right;
+}
+.TaskName > input {
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    padding-left: 5px;
+}
+.Description {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: initial;
+}
+.Description > textarea {
+    height: 50px;
+    outline: none;
+    padding-left: 5px;
+    resize: none;
+}
+.Confirm {
+    display: flex;
+    justify-content: space-between;
+}
+.Confirm-btn {
+    display: flex;
+    align-items: center;
+}
+.Confirm-btn > button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #cccccc;
+    outline: none;
+    cursor: pointer;
+}
+.Confirm-btn .Update-btn {
+    background-color: #3333FF;
+}
+.Confirm-btn .Update-btn:hover {
+    background-color: #0000CC;
+}
+.Confirm-btn .Cancel-btn {
+    background-color: #FF3333;
+}
+.Confirm-btn .Cancel-btn:hover {
+    background-color: #CC0000;
+}
+.Confirm-btn > button:first-child {
+    margin-right: 5px;
+}

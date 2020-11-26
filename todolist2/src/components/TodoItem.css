@@ -1,0 +1,31 @@
+.Tasks {
+    width: 100%;
+    border: 1px solid #A0A0A0;
+    margin: 10px 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.Item {
+    border-bottom: 1px solid #A0A0A0;
+    display: flex;
+    align-items: center;
+}
+.Item:last-child {
+    border: none;
+}
+.Item > p {
+    padding-left: 5px;
+    width: 75%;
+    overflow-wrap: break-word;
+    margin-right: 10px;
+}
+.Item > img {
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.ItemComplete > p {
+    text-decoration: line-through;
+    opacity: 0.5;
+}

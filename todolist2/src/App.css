@@ -1,0 +1,57 @@
+body {
+    position: relative;
+}
+.Title {
+    font-family: fantasy;
+    text-transform: uppercase;
+    text-align: center;
+}
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+.Add-new-task {
+    margin: auto;
+    width: 30%;
+    padding: 35px;
+    background-color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+}
+.Add-new-task > input {
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    padding-left: 5px;
+}
+.Add-new-task > label {
+    margin: 10px 0;
+}
+.Add-new-task > textarea {
+    height: 50px;
+    outline: none;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+.Add-new-task > button {
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    background-color: #4C9900;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+.AddNewTask > button:hover {
+    background-color: #336600;
+}
+.List-tasks {
+    margin: auto;
+    width: 30%;
+    padding: 35px;
+    background-color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+}
