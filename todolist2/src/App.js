@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Search from './components/Search';
 import TodoItem from './components/TodoItem';
@@ -10,7 +10,11 @@ function App() {
   const url = 'http://localhost:9081/tasks';
   // get datas from json file
   useEffect(() => {
-    axios.get(url).then(json => setTasks(json.data))
+    try {
+      axios.get(url).then(json => setTasks(json.data));
+    } catch (error) {
+      console.log("Failed to get data");
+    }
   }, [])
 
   // get value of task name and description field
@@ -19,18 +23,18 @@ function App() {
 
   // check task is existed
   const isExisted = () => {
-    for(let task of tasks) {
-      if(newTaskName === task.Title) {
+    for (let task of tasks) {
+      if (newTaskName === task.Title) {
         return true;
       }
     }
     return false;
   }
-  
+
   // handle to add new task
   const addNewTask = () => {
-    if(newTaskName !== '' && !isExisted()) {
-      const item = {Title : newTaskName, Description : description, isComplete : false};
+    if (newTaskName !== '' && !isExisted()) {
+      const item = { Title: newTaskName, Description: description, isComplete: false };
       // add new task and render list tasks
       setTasks([
         ...tasks, item
@@ -40,9 +44,9 @@ function App() {
       setDes('');
       // post data to json file
       axios.post(url, item)
-      .catch(err => {
-        console.log(err);
-      })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
   const setNewTaskName = event => {
@@ -53,12 +57,12 @@ function App() {
   }
   // check task is complete then change status
   const checkTaskComplete = item => {
-    setTasks(tasks.map(i => i !== item ? {...i} : {...i, isComplete : !item.isComplete}));
+    setTasks(tasks.map(i => i !== item ? { ...i } : { ...i, isComplete: !item.isComplete }));
     // update status item in db
-    axios.put(`${url}/${item.id}`,{...item, isComplete : !item.isComplete})
-    .catch(err => {
-      console.log(err);
-    })
+    axios.put(`${url}/${item.id}`, { ...item, isComplete: !item.isComplete })
+      .catch(err => {
+        console.log(err);
+      })
   }
   // delete task
   const deleteTask = (item, index) => {
@@ -66,9 +70,9 @@ function App() {
     setTasks([...tasks]);
     // delete task in db
     axios.delete(`${url}/${item.id}`, item)
-    .catch(err => {
-      console.log(err);
-    })
+      .catch(err => {
+        console.log(err);
+      })
   }
   const [taskID, setTaskID] = useState('');
   const [taskNameToUpdate, setTaskNameToUpdate] = useState('');
@@ -92,14 +96,14 @@ function App() {
   // update task information
   const updateTaskInfo = () => {
     setTasks(
-      tasks.map(item => item.id !== taskID ? {...item} : {...item, Title : taskNameToUpdate, Description : descriptionToUpdate})
+      tasks.map(item => item.id !== taskID ? { ...item } : { ...item, Title: taskNameToUpdate, Description: descriptionToUpdate })
     );
     setModalIsOpen(false);
     //update task information in db
-    axios.put(`${url}/${taskID}`, {Title : taskNameToUpdate, Description : descriptionToUpdate})
-    .catch(err => {
-      console.log(err);
-    })
+    axios.put(`${url}/${taskID}`, { Title: taskNameToUpdate, Description: descriptionToUpdate })
+      .catch(err => {
+        console.log(err);
+      })
   }
   // close popup
   const closePopup = () => {
@@ -129,39 +133,39 @@ function App() {
     <div className="App">
       <h2 className="Title">Todo List App</h2>
       <div className="Add-new-task">
-            <input value={newTaskName} onChange={setNewTaskName} placeholder="Add new task..."/>
-            <label>Description</label>
-            <textarea value={description} onChange={setDescription} />
-            <button onClick={addNewTask}>Add</button>
+        <input value={newTaskName} onChange={setNewTaskName} placeholder="Add new task..." />
+        <label>Description</label>
+        <textarea value={description} onChange={setDescription} />
+        <button onClick={addNewTask}>Add</button>
       </div>
       <h2 className="Title">List Tasks</h2>
       <div className="List-tasks">
-        <Search 
-          searchTaskNameField = {searchTaskNameField}
-          searchTask = {searchTask}
+        <Search
+          searchTaskNameField={searchTaskNameField}
+          searchTask={searchTask}
         />
         <div className="Tasks">
-          { tasks.length && tasks.map((item, index) => 
-              <TodoItem 
-                key = {index} 
-                item = {item}
-                checkTask={ () => checkTaskComplete(item)} 
-                deleteTask={ () => deleteTask(item, index)}
-                editTask={ () => editTaskInfo(item)}
-              />
-            )
+          {tasks.length && tasks.map((item, index) =>
+            <TodoItem
+              key={index}
+              item={item}
+              checkTask={() => checkTaskComplete(item)}
+              deleteTask={() => deleteTask(item, index)}
+              editTask={() => editTaskInfo(item)}
+            />
+          )
           }
         </div>
       </div>
       <EditPopup
-        modalIsOpen = {modalIsOpen}
-        closePopup = {closePopup}
-        taskID = {taskID}
-        taskNameToUpdate = {taskNameToUpdate}
-        descriptionToUpdate = {descriptionToUpdate}
-        getUpdateTaskName = {getUpdateTaskName}
-        getUpdateDescription = {getUpdateDescription}
-        updateTaskInfo = {updateTaskInfo}
+        modalIsOpen={modalIsOpen}
+        closePopup={closePopup}
+        taskID={taskID}
+        taskNameToUpdate={taskNameToUpdate}
+        descriptionToUpdate={descriptionToUpdate}
+        getUpdateTaskName={getUpdateTaskName}
+        getUpdateDescription={getUpdateDescription}
+        updateTaskInfo={updateTaskInfo}
       />
     </div>
   );
