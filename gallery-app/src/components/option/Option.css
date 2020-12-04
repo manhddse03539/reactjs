@@ -1,0 +1,30 @@
+.Option {
+    margin-top: 5%;
+}
+
+.Option-btn {
+    padding: 0;
+    margin-top: 3%;
+}
+
+.Option-btn>a {
+    margin-right: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    color: #917c55;
+    border: 1px solid #917c55;
+    padding: 8px;
+}
+
+.Option-btn>.active {
+    color: #ffffff;
+    background-color: #716142;
+}
+
+.Option-btn>a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #917c55;
+}

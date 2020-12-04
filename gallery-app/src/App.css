@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #cbbea6;
+    position: relative;
+    background-size: cover;
+    font-family: 'Arimo', sans-serif;
+}
+
+.App {
+    background: white;
+    max-width: 1280px;
+    margin: 0 auto;
+}

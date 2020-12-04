@@ -1,0 +1,13 @@
+.Galleries {
+    margin-top: 3%;
+    padding: 0;
+}
+
+.Galleries>img {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.Galleries>img:hover {
+    opacity: 0.8;
+}
