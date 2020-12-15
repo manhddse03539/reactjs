@@ -1,0 +1,13 @@
+.menu-bar>a {
+    letter-spacing: 1px;
+    margin-right: 10px;
+    color: black;
+}
+
+.menu-bar>a:hover {
+    text-decoration: none;
+}
+
+.menu-bar>.active {
+    color: cornflowerblue;
+}
