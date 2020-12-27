@@ -1,0 +1,43 @@
+.drag-drop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    height: 500px;
+    margin: 20px auto;
+    background-color: wheat;
+}
+
+.drop-space {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #cccccc;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    position: relative;
+    left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+}
+
+.drag-items {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    right: 20px;
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: violet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
