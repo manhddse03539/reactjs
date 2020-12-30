@@ -2,18 +2,19 @@ import React from 'react';
 import './index.css';
 
 const index = (props) => {
-    const { onDrag, handleOnDragStart, handleOnDrop, allowDrop } = props;
-    const DragItems = [
-        { id: 0, name: "Drag1" },
-        { id: 1, name: "Drag2" },
-    ];
+    const { onDrag, handleOnDragStart, handleOnDrop, allowDrop, dragItems, dropedItems } = props;
+
     return (
         <div className="drag-drop">
             <div onDrop={handleOnDrop} onDragOver={allowDrop} className="drop-space">
-                <p>Drop here! Man</p>
+                {dropedItems.map(item => (
+                    <span key={item.id}>
+                        {item.name}
+                    </span>
+                ))}
             </div>
             <div className="drag-items">
-                {DragItems.map(item => (
+                {dragItems.map(item => (
                     <span
                         id={item.id}
                         key={item.id}
