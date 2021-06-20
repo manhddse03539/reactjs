@@ -1,6 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-navi';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { anElementAction } from '~/app/redux/longTerm/longTerm.slice';
 import Wrapper from './listpage.styles';
 import TablePaginationData from '~/components/TablePagination';
 import Checkbox from '~/components/CheckBox';
@@ -10,6 +12,7 @@ import Button from '~/components/Button';
 function ListPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get('http://localhost:3000/data').then((res) => {
@@ -67,6 +70,7 @@ function ListPage() {
   const handleDelete = (id) => {
     const newData = data.filter(item => item.id !== id);
     setData(newData);
+    dispatch(anElementAction( id ));
   }
 
   const handleCheckbox = (id) => {
