@@ -1,0 +1,17 @@
+{
+    "data" : [
+      { "id": 11, "toroku_code": "A001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false},
+      { "id": 2, "toroku_code": "B001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 3, "toroku_code": "B002", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 4, "toroku_code": "C001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 5, "toroku_code": "D001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 66, "toroku_code": "E001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 7, "toroku_code": "F001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 8, "toroku_code": "G001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 9, "toroku_code": "H001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 10, "toroku_code": "KA001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 11, "toroku_code": "CA001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 12, "toroku_code": "BA001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false },
+      { "id": 13, "toroku_code": "EA001", "ippan": "G1", "shouhin": "medicine1", "kokuji": "test1", "kubun": "test1", "nissu": 3, "kokuji_nichi": "2021/06/18", "error": "エラー", "checked": false }
+  ]
+}

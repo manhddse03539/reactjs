@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   }
 `;
 
-function Pagination({ totalItem, itemPerPage, activePage, handlePaginate }) {
+function Pagination({ totalItem = 0, itemPerPage, activePage, handlePaginate }) {
   return (
     <Wrapper>
       <ReactPaginate

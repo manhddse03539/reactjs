@@ -5,13 +5,14 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import get from 'lodash/get';
+import { Spinner } from 'react-bootstrap';
 import Pagination from '~/components/Pagination';
 import Wrapper from './tablePagination.styles.js';
 import { ITEM_PER_PAGE } from '~/constant';
-import { getCurrentData} from '~/helper/helper';
+import { getCurrentData } from '~/helper/helper';
 
 
-function TablePaginationData({ columns, data }) {
+function TablePaginationData({ columns, data, loading }) {
   // set pagination data
   const [currentPage, setCurrentPage] = useState(1);
   const currentData = getCurrentData(data, currentPage, ITEM_PER_PAGE);
@@ -31,6 +32,7 @@ function TablePaginationData({ columns, data }) {
             ))}
             </tr>
           </thead>
+          {loading && <Spinner variant="primary" animation="border" />}
           <tbody>
             {currentData && currentData.map((row, index) => (
               <tr key={index}>
@@ -42,8 +44,9 @@ function TablePaginationData({ columns, data }) {
               </tr>
             ))}
           </tbody>
-          </table>
-        </div>
+        </table>
+        {data.length === 0 && <div className="no-data">データがありません。</div>}
+      </div>
       <Pagination totalItem={data.length} itemPerPage={ITEM_PER_PAGE} activePage={currentPage} handlePaginate={handlePaginate}/>
     </Wrapper>
   )

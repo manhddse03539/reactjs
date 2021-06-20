@@ -1,35 +1,23 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-navi';
+import axios from 'axios';
 import Wrapper from './listpage.styles';
 import TablePaginationData from '~/components/TablePagination';
 import Checkbox from '~/components/CheckBox';
 import Search from '~/components/Search';
+import Button from '~/components/Button';
 
 function ListPage() {
-  const data = [
-    { id: '1', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '2', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '3', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '4', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '5', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '6', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '7', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '8', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '9', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '10', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '11', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '12', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '13', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '14', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '15', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '16', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '17', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '18', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '19', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '20', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '21', toroku_code: 'A001', ippan: 'G1', shouhin: 'medicine1', kokuji: 'test1', kubun: 'test1', nissu: '3', kokuji_nichi: '2021/06/18' },
-    { id: '22', toroku_code: 'A002', ippan: 'G2', shouhin: 'medicine3', kokuji: 'test4', kubun: 'test5', nissu: '3', kokuji_nichi: '2021/06/18' }
-  ];
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/data').then((res) => {
+      setData(res.data);
+      setLoading(res.data.length === 0)
+    })
+  }, []);
+
   const columns = [
     {
       name: '',
@@ -66,15 +54,42 @@ function ListPage() {
     {
       name: '告示日',
       field: 'kokuji_nichi',
+    }, 
+    {
+      name: 'エラー内容',
+      field: 'error',
+    },
+    {
+      name: '',
+      field: 'action',
     },
   ];
+  const handleDelete = (id) => {
+    const newData = data.filter(item => item.id !== id);
+    setData(newData);
+  }
+
+  const handleCheckbox = (id) => {
+    const newData = [...data];
+    const foundIndex = newData.findIndex(item => (item.id === id));
+    newData[foundIndex] = {
+      ...data[foundIndex], checked: !newData[foundIndex].checked
+    }
+    setData(newData);
+  }
 
   const restructureData = useMemo(() => (
-      data &&
+      data.length > 0 &&
       data.map(record => ({
         ...record,
         checkbox: (
-          <Checkbox />
+          <Checkbox checked={record.checked} onChange={()=>handleCheckbox(record.id)}/>
+        ),
+        action: (
+          <div className="action">
+            <Button className='btn btn-outline-warning edit-btn' label='編集' />
+            <Button className='btn btn-outline-danger delete-btn' label='削除' handleOnClick={()=>handleDelete(record.id)} />
+          </div>
         ),
       }))
   ), [data]);
@@ -94,7 +109,7 @@ function ListPage() {
   return (
     <Wrapper className="col-8">
       <Search handleOnChange={handleOnChange} handleOnclick={handleOnclick} className="search-form" />
-      <TablePaginationData columns={columns} data={searchedData || restructureData}/>
+      <TablePaginationData columns={columns} data={searchedData || restructureData} loading={loading} />
       <Link href="/long-term/prepare">メンテナンス開始</Link>
     </Wrapper>
   );

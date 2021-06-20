@@ -22,6 +22,7 @@ export default styled.div`
     }
   }
   input:focus {
+    outline: none;
     box-shadow: none;
   }
   .alert-danger {

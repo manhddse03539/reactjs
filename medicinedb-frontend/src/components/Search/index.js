@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     width: 300px;
     justify-content: space-between;
     input {
-      outline: none;
+        outline: none;
         box-shadow: none;
         height: 100%;
         border: 1px solid #ccc;

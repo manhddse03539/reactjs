@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import CheckBox from 'rc-checkbox';
 
-function Checkbox() {
-    const [checked, setChecked] = useState(false);
-    const onChange = (e) => {
-        setChecked(!checked);
-        console.log(e.target.checked);
-    }
-
+function Checkbox({ checked, onChange}) {
     return (
         <CheckBox
             checked = {checked}
